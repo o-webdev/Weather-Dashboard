@@ -13,6 +13,7 @@ $(document).ready(function () {
   var today = $("#today");
   var forecast = $("#forecast");
   var history = $("#history");
+   var historyItems = [];
 
   // Initial form submit function, form sets the event to be triggered when clicked
   // preventDefault prevents the default behaviour such as cauing the page to refresh
@@ -21,7 +22,8 @@ $(document).ready(function () {
     event.preventDefault();
     var city = input.val();
 
-    // Use AJAX to make API call to get current weather of searched city
+//-------------------------Start of current weather function---------------------------//
+// Use AJAX to make API call to get current weather of searched city
     $.ajax({
       url: todayURL + city + APIKey,
       method: "GET",
@@ -59,6 +61,7 @@ $(document).ready(function () {
       $("#today").append(name, date, icon, hr, temperature, humidity, wind);
       $("#today").css({ "border": "0.5px solid black", "border-radius": "5px", "padding-left": "10px" });
 
+      //--------------------------------start of forecast function------------------//
       $.ajax ({
         url:forcastURL + city + APIKey,
         method: "GET"
@@ -86,9 +89,10 @@ $(document).ready(function () {
                 wind.text("Wind: " + data.list[i].wind.speed);
 
                 forecastCard.append(date, icon, temperature, humidity, wind)
-               forecast.append(forecastCard);
-               $(".forecast-card").css({"background-color": "#28B8CE", "padding": "5px", "border-radius": "5px" });
-               $(".row.mt-3").css({"justify-content": "space-between", "text-align": "center", "padding-top": "20px"})
+                forecast.append(forecastCard);
+                $(".forecast-card").css({"background-color": "#28B8CE", "padding": "5px", "border-radius": "5px" });
+                $(".row.mt-3").css({"justify-content": "space-between", "text-align": "center", "padding-top": "20px"})
+                
             }
         }
       })
