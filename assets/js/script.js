@@ -39,7 +39,7 @@ $(document).ready(function () {
         "padding": "5px 10px",
         "border": "1px solid black",
         "border-radius": "5px",
-        "margin-right": "10px",
+        "margin": "3px",
 });
 
 // add click event to the historyButton
@@ -50,7 +50,9 @@ historyButton.on("click", function() {
 history.append(historyButton);
     });
     }
-
+$("#history").on("click", "button", function() {
+    var city = $(this).text();
+    $("#search-input").val(city);
 //-------------------------Start of current weather function---------------------------//
 // Use AJAX to make API call to get current weather of searched city
     $.ajax({
@@ -128,3 +130,4 @@ history.append(historyButton);
     });
   });
 });
+})
