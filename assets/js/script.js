@@ -10,17 +10,46 @@ $(document).ready(function () {
   // Variables to access from HTML
   var form = $("#search-form");
   var input = $("#search-input");
+  var submitBtn = $("#search-button")
   var today = $("#today");
   var forecast = $("#forecast");
   var history = $("#history");
-   var historyItems = [];
+  var cityHistory = [];
+   
 
   // Initial form submit function, form sets the event to be triggered when clicked
   // preventDefault prevents the default behaviour such as cauing the page to refresh
   // input gets the value entered and stores it in the var "city"
-  form.on("click", function (event) {
+  submitBtn.on("click", function (event) {
     event.preventDefault();
     var city = input.val();
+
+    if (city) {
+    // Push city to the cityHistory array
+    cityHistory.push(city);
+    // clear the history section
+    history.empty();
+
+    // Loop through the cityHistory array and creat buttons for each city
+    cityHistory.forEach(function (historyCity) {
+        var historyButton = $("<button>");
+        historyButton.text(historyCity);
+        historyButton.css({
+        "background-color": "lightgray",
+        "padding": "5px 10px",
+        "border": "1px solid black",
+        "border-radius": "5px",
+        "margin-right": "10px",
+});
+
+// add click event to the historyButton
+historyButton.on("click", function() {
+    // set the value of the input field to the clicked city
+    input.val(historyCity);
+});
+history.append(historyButton);
+    });
+    }
 
 //-------------------------Start of current weather function---------------------------//
 // Use AJAX to make API call to get current weather of searched city
