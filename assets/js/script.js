@@ -122,7 +122,7 @@ $("#history").on("click", "button", function() {
                 forecastCard.append(date, icon, temperature, humidity, wind)
                 forecast.append(forecastCard);
                 $(".forecast-card").css({"background-color": "#28B8CE", "padding": "5px", "border-radius": "5px" });
-                $(".row.mt-3").css({"justify-content": "space-between", "text-align": "center", "padding": "20px"})
+                $("#forecast").css({"justify-content": "space-between", "text-align": "center", "padding": "20px"})
                 
             }
         }
