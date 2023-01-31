@@ -100,7 +100,7 @@ $("#history").on("click", "button", function() {
         // Make sure the forecast is empty so it doesnt append
         forecast.empty();
 
-
+        
         // Loop through the forecast data (every 3 hours)
         for (var i = 0; i < data.list.length; i++) {
             // get the forecast for each day
