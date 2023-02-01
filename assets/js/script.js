@@ -4,6 +4,7 @@ $(document).ready(function () {
   var forcastURL = "https://api.openweathermap.org/data/2.5/forecast?q=";
 
   // Prompt to API key,  Ln8 is for local testing
+var APIKey = '&appid=e851c17f69e665b5bbdb5e7f838e3849';
   
 //   var APIKey = prompt("Please enter your OpenWeatherMap API key: ");
 
